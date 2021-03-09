@@ -7,6 +7,7 @@ export default function IndexPage() {
        name="file"
         action="/api/song/upload"
         accept=".mp3"
+        multiple
         onChange={info=>{
           if(info.file.status === 'done'){
             message.success('上传成功')

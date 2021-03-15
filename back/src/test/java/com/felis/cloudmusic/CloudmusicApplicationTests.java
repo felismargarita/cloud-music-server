@@ -15,7 +15,6 @@ class CloudmusicApplicationTests {
 		System.out.println(song.getSinger());
 		System.out.println(song.getAlbum());
 		System.out.println(song.getDuration());
-
 	}
 
 }

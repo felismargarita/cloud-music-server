@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.felis.cloudmusic.mapper.CommentMapper">
+    <resultMap id="CommentMapper" type="com.felis.cloudmusic.entity.Comment">
+        <id property="id" column="id"/>
+        <result property="createdUserId" column="created_user_id"/>
+        <result property="createdUsername" column="username"/>
+        <result property="createdNickname" column="nickname"/>
+        <result property="songId" column="song_id"/>
+        <result property="songName" column="song_name"/>
+        <result property="content" column="content"/>
+        <result property="createdTime" column="created_time"/>
+        <result property="like" column="user_like"/>
+        <result property="referId" column="refer_id"/>
+    </resultMap>
+
+
+    <select id="get" resultMap="CommentMapper">
+        select a.id,
+               a.created_user_id,
+               b.username,
+               b.nickname,
+               a.song_id,
+               c.name as song_name,
+               a.content,
+               a.created_time,
+               a.user_like,
+               a.refer_id
+        from cloud_comment a
+               inner join cloud_user b on a.created_user_id = b.id
+               inner join cloud_song c on a.song_id = c.id
+    </select>
+
+</mapper>
